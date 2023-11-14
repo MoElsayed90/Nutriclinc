@@ -28,18 +28,30 @@
 									<div class="card-sigin">
 										<div class="mb-5 d-flex"> <a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('Dashboard1/img/brand/favicon.png')}}" class="sign-favicon ht-40" alt="logo"></a><h1 class="main-logo1 ml-1 mr-0 my-auto tx-28">Va<span>le</span>x</h1></div>
 										<div class="card-sigin">
+                                            <h2>{{__('Dashboard/Login_trans.Welcome')}}</h2>
                                             <div class="form-group">
-                                                <label for="exampleFormControlSelect1">حدد طريقة الدخول</label>
-                                                <select class="form-control" id="sectionChooser">
-                                                  <option value="" selected disabled>أختر من القائمة</option>
-                                                  <option value="user">زائر</option>
-                                                  <option value="admin">دكتور</option>
+                                                @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                        @endif
+                                        <label for="exampleFormControlSelect1">{{__('Dashboard/Login_trans.Select_Enter')}}</label>
+                                        <select class="form-control" id="sectionChooser">
+                                          <option value="" selected disabled>{{__('Dashboard/Login_trans.Choose_list')}}</option>
+                                          <option value="user">{{__('Dashboard/Login_trans.user')}}</option>
+                                          <option value="admin">{{__('Dashboard/Login_trans.admin')}}</option>
                                                 </select>
                                               </div>
 											<div class="main-signup-header">
                                                 {{-- form-user --}}
 												<div class="loginform" id="user">
-												<h5 class="font-weight-semibold mb-4"> أهلا بك فى عيادات Nutri Clinc</h5>
+												<h5 class="font-weight-semibold mb-4">{{__('Dashboard/Login_trans.welcome_to_Nutri_clinic_client')}}</h5>
+                                              
+ 
                                                 <form method="POST" action="{{ route('login.Patient') }}">
                                                     @csrf
 													<div class="form-group">
@@ -65,7 +77,7 @@
 
                                              {{-- form-admin --}}
 												<div class="loginform" id="admin">
-                                                    <h5 class="font-weight-semibold mb-4">  أهلا بك يا دكتور فى عيادات Nutri Clinc</h5>
+                                                    <h5 class="font-weight-semibold mb-4">{{__('Dashboard/Login_trans.welcome_to_Nutri_clinic_Admin')}}</h5>
                                                     <form method="POST" action="{{ route('login.Admin') }}">
                                                         @csrf
                                                         <div class="form-group">
