@@ -6,9 +6,13 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ModelsSection extends Model
+class Section extends Model
 {
+    protected $fillable = [
+        'name',
+    ]; 
     use Translatable ;
     public $translatedAttributes = ['name'];
     use HasFactory;
+
 }
